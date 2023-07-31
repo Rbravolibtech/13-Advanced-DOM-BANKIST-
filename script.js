@@ -88,7 +88,7 @@ message.style.height =
 document.documentElement.style.setProperty('--color-primary', 'orangered');
 
 /////////////////////// ATTRIBUTES //////////////////////////
-
+/*
 const logo = document.querySelector('.nav_logo');
 console.log(logo.alt);
 console.log(logo.src);
@@ -119,3 +119,28 @@ logo.classList.contains('c'); // not includes
 
 // Don't use
 logo.className = 'jonas';
+*/
+
+const btnScrollTo = document.querySelector('.btn--scroll-to');
+const section1 = document.querySelector('#section--1');
+
+btnScrollTo.addEventListener('click', function (e) {
+  const s1coords = section1.getBoundingClientRect();
+  console.log(s1coords);
+
+  console.log(e.target.getBoundingClientRect());
+
+  // scrolling
+  // window.scrollTo(
+  //   s1coords.left + window.pageXOffset,
+  //   s1coords.top + window.pageYOffset
+  // );
+
+  // window.scrollTo({
+  //   left: s1coords.left + window.pageXOffset,
+  //   top: s1coords.top + window.pageYOffset,
+  //   behavior: 'smooth',
+  // });
+
+  section1.scrollIntoView({ behavior: 'smooth' });
+});

@@ -89,6 +89,35 @@ btnScrollTo.addEventListener('click', function (e) {
     }
   });
 
+  ////////////////// BUILDING A TABBED COMPONENT //////////////////////////
+
+  const tabs = document.querySelectorAll('.operations_tab');
+  const tabsContainer = document.querySelector('operations_tabs-container');
+  const tabsContent = document.querySelectorAll('operations_content');
+
+  tabsContainer.addEventListener('click', function (e) {
+    const clicked = e.target.closest('.operations_tab');
+    console.log(clicked);
+
+    //Guard clause
+    if (!clicked) return;
+
+    //REMOVE ACTIVE classes
+
+    tabs.forEach(t => t.classList.remove('operations_tab--active'));
+    tabsContent.forEach(c => c.classList.remove('operations_content--active'));
+
+    //Active Tab
+    clicked.classList.add('operations_tab--active');
+
+    //Active content area
+    console.log(clicked.dataset.tab);
+
+    document
+      .querySelector(`.operations_content--${clicked.dataset.tab}`)
+      .classList.add('operations_content--active');
+  });
+
   ////////////// SELECTING CREATING AND DELETING ELEMENTS /////////////////
 
   // console.log(document.documentElement);
@@ -243,32 +272,33 @@ logo.className = 'jonas';
   //   });
   ////////////////// DOM TRAVERSING //////////////////////////
 
-  const h1 = document.querySelector('h1');
+  //   const h1 = document.querySelector('h1');
 
-  // Going downwards: child
-  console.log(h1.querySelectorAll('.highlight'));
-  console.log(h1.childNodes);
-  console.log(h1.children);
-  h1.firstElementChild.style.color = 'white';
-  h1.lastElementChild.style.color = 'orangered';
+  //   // Going downwards: child
+  //   console.log(h1.querySelectorAll('.highlight'));
+  //   console.log(h1.childNodes);
+  //   console.log(h1.children);
+  //   h1.firstElementChild.style.color = 'white';
+  //   h1.lastElementChild.style.color = 'orangered';
 
-  // Going upwards: parents
-  console.log(h1.parentNode);
-  console.log(h1.parentElement);
+  //   // Going upwards: parents
+  //   console.log(h1.parentNode);
+  //   console.log(h1.parentElement);
 
-  h1.closest('.header').style.background = 'var(--gradient-secondary)';
+  //   h1.closest('.header').style.background = 'var(--gradient-secondary)';
 
-  h1.closest('h1').style.background = 'var(--gradient-primary)';
+  //   h1.closest('h1').style.background = 'var(--gradient-primary)';
 
-  // Going sideways: siblings
-  console.log(h1.previousElementSibling);
-  console.log(h1.nextElementSibling);
+  //   // Going sideways: siblings
+  //   console.log(h1.previousElementSibling);
+  //   console.log(h1.nextElementSibling);
 
-  console.log(h1.previousSibling);
-  console.log(h1.nextSibling);
+  //   console.log(h1.previousSibling);
+  //   console.log(h1.nextSibling);
 
-  console.log(h1.parentElement.children);
-  [...h1.parentElement.children].forEach(function (el) {
-    if (el !== h1) el.style.transform = 'scale(0.5)';
-  });
+  //   console.log(h1.parentElement.children);
+  //   [...h1.parentElement.children].forEach(function (el) {
+  //     if (el !== h1) el.style.transform = 'scale(0.5)';
+  //   });
+  // });
 });

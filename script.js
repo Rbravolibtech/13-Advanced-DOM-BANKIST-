@@ -7,6 +7,11 @@ const btnsOpenModal = document.querySelectorAll('.btn--show-modal');
 const btnScrollTo = document.querySelector('.btn--scroll-to');
 const section1 = document.querySelector('#section--1');
 
+const nav = document.querySelector('.nav');
+
+const tabs = document.querySelectorAll('.operations_tab');
+const tabsContainer = document.querySelector('operations_tabs-container');
+const tabsContent = document.querySelectorAll('operations_content');
 ///////////////////////////////////////
 // Modal window
 
@@ -91,10 +96,6 @@ btnScrollTo.addEventListener('click', function (e) {
 
   ////////////////// BUILDING A TABBED COMPONENT //////////////////////////
 
-  const tabs = document.querySelectorAll('.operations_tab');
-  const tabsContainer = document.querySelector('operations_tabs-container');
-  const tabsContent = document.querySelectorAll('operations_content');
-
   tabsContainer.addEventListener('click', function (e) {
     const clicked = e.target.closest('.operations_tab');
     console.log(clicked);
@@ -118,6 +119,23 @@ btnScrollTo.addEventListener('click', function (e) {
       .classList.add('operations_content--active');
   });
 
+  ////////////// MENU FADE ANIMATION /////////////////
+  const handleHover = function (e) {
+    if (e.target.classList.contains('nav__link')) {
+      const link = e.target;
+      const siblings = link.closest('.nav').querySelectorAll('.nav__link');
+      const logo = link.closest('.nav').querySelector('img');
+
+      siblings.forEach(el => {
+        if (el !== link) el.style.opacity = this;
+      });
+      logo.style.opacity = this;
+    }
+  };
+  //PASSING ARGUMENT INTO HANDLER
+  nav.addEventListener('mouseover', handleHover.bind(0.5));
+
+  nav.addEventListener('mouseout', handleHover.bind(1));
   ////////////// SELECTING CREATING AND DELETING ELEMENTS /////////////////
 
   // console.log(document.documentElement);
@@ -158,7 +176,7 @@ btnScrollTo.addEventListener('click', function (e) {
 
   /////////////////////// STYLES //////////////////////////
 
-  // message.style.backgroundColor = '#37383d';
+  //  message.style.backgroundColor = '#37383d';
   // message.style.width = '120%';
 
   // console.log(message.style.backgroundColor);
@@ -300,5 +318,5 @@ logo.className = 'jonas';
   //   [...h1.parentElement.children].forEach(function (el) {
   //     if (el !== h1) el.style.transform = 'scale(0.5)';
   //   });
-  // });
+  // })
 });

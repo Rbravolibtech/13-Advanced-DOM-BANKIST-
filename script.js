@@ -275,6 +275,8 @@ const slider = function () {
   btnRight.addEventListener('click', nextSlide);
   btnLeft.addEventListener('click', prevSlide);
 
+  ////////////// BUILDING A SLIDER COMPONENT PART 2 /////////////////
+
   document.addEventListener('keydown', function (e) {
     if (e.key === 'ArrowLeft') prevSlide();
     e.key === 'ArrowRight' && nextSlide();
